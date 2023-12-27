@@ -15,7 +15,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        # csv_file_path = 'phones.csv'
+        csv_file_path = 'phones.csv'
 
         try:
             with open('phones.csv', 'r', encoding='utf-8') as file:

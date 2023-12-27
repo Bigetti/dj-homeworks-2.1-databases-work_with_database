@@ -7,9 +7,14 @@ def index(request):
 
 
 def show_catalog(request):
-    phones = Phone.objects.all()
+    # Получение параметра сортировки из URL
+    order_by = request.GET.get('order_by', 'name')
+    # Запрос к базе данных с учетом выбранного порядка сортировки
+    phones = Phone.objects.order_by(order_by)
+
+    # phones = Phone.objects.all()
     template = 'catalog.html'
-    context = {'phones': phones}
+    context = {'phones': phones, 'order_by': order_by}
     return render(request, template, context)
 
 
